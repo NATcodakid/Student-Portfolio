@@ -1,0 +1,14 @@
+{
+  "name": "john-johnson-portfolio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "npm run typecheck && npm run bundle",
+    "typecheck": "tsc --noEmit",
+    "bundle": "esbuild src/main.ts --bundle --minify --outfile=js/main.js --format=iife --platform=browser && esbuild src/ui-pro.ts --bundle --minify --outfile=js/ui-pro.js --format=iife --platform=browser && esbuild src/case-study.ts --bundle --minify --outfile=js/case-study.js --format=iife --platform=browser"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "typescript": "^5.7.3"
+  }
+}

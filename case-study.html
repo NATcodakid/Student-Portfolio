@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Deep case study: how Checkout Rush was researched, designed, engineered, and tested—a browser 3D educational game for money math." />
+  <title>Student Portfolio - Case Study</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="page-case-study">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="bg-mesh" aria-hidden="true">
+    <svg class="w1" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 5 L95 30 L95 70 L50 95 L5 70 L5 30 Z" stroke="currentColor" stroke-width="0.8"/></svg>
+    <svg class="w2" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 8 L88 32 L88 68 L50 92 L12 68 L12 32 Z" stroke="currentColor" stroke-width="0.7"/></svg>
+  </div>
+  <div class="bg-aurora" aria-hidden="true">
+    <div class="bg-aurora__blob bg-aurora__blob--a"></div>
+    <div class="bg-aurora__blob bg-aurora__blob--b"></div>
+    <div class="bg-aurora__blob bg-aurora__blob--c"></div>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="site-wrap">
+    <div class="scroll-progress" aria-hidden="true"></div>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="site-logo" href="index.html" aria-label="John Johnson, home">
+          <img class="site-logo__mark" src="Assets/brand/jj-mark.svg" width="40" height="40" alt="" role="presentation" loading="eager" decoding="async" />
+          <span class="site-logo__type" aria-hidden="true">
+            <span class="site-logo__john">John</span>
+            <span class="site-logo__johnson">Johnson</span>
+          </span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+          <span class="nav-toggle__bars" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </span>
+        </button>
+        <nav id="site-nav" class="site-nav" aria-label="Primary">
+          <a href="index.html">Home</a>
+          <a href="projects.html">Projects</a>
+          <a class="is-active" href="case-study.html">Case Study</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <header class="case-hero">
+        <div class="container container--case">
+          <h1>Checkout <span class="accent">Rush</span></h1>
+          <p class="case-hero__tagline">A first-person 3D grocery checkout simulator that teaches adding totals, counting money, and making change—under the pressure of a moving line.</p>
+          <p class="case-hero__meta">Solo developer · 12-week sprint · Portfolio Pathway · shipped to GitHub Pages</p>
+          <div class="btn-row btn-row--center">
+            <a class="btn btn--primary" href="https://checkoutrush.netlify.app/" target="_blank" rel="noopener noreferrer">Play live</a>
+            <a class="btn btn--ghost" href="https://github.com/NATcodakid/Checkout-Rush" target="_blank" rel="noopener noreferrer">View source code</a>
+          </div>
+          <div class="case-stats-row" aria-label="Project facts">
+            <div class="case-stat"><strong>12</strong><span>Weeks build</span></div>
+            <div class="case-stat"><strong>24+</strong><span>Playtest sessions</span></div>
+            <div class="case-stat"><strong>6</strong><span>Student testers</span></div>
+            <div class="case-stat"><strong>0</strong><span>Install required</span></div>
+          </div>
+          <div class="case-hero__preview">
+            <div class="case-hero__preview-inner">
+              <img src="Assets/screenshots/checkout-rush-v2-robot-donut.png" width="1024" height="543" alt="Checkout Rush in-game: checkout counter with robot customer, receipt, and score HUD." />
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <article class="case-article">
+        <div class="container container--case case-shell">
+          <div class="case-layout">
+            <aside class="case-toc" aria-label="Table of contents">
+              <details class="case-toc-mobile">
+                <summary>On this page</summary>
+                <nav class="case-toc-list" aria-label="On this page (mobile)">
+                  <ul>
+                    <li><a href="#overview" class="is-active">Overview</a></li>
+                    <li><a href="#problem">Problem</a></li>
+                    <li><a href="#research">Research</a></li>
+                    <li><a href="#audience">Audience &amp; goals</a></li>
+                    <li><a href="#solution">Solution</a></li>
+                    <li><a href="#loop">Core loop</a></li>
+                    <li><a href="#before-after">Before &amp; after</a></li>
+                    <li><a href="#design-process">Design process</a></li>
+                    <li><a href="#architecture">Architecture</a></li>
+                    <li><a href="#tech-stack">Tech stack</a></li>
+                    <li><a href="#testing">Testing</a></li>
+                    <li><a href="#results">Results</a></li>
+                    <li><a href="#accessibility">Accessibility</a></li>
+                    <li><a href="#upgrade-v2">Visual upgrade (v2)</a></li>
+                    <li><a href="#roadmap">Roadmap</a></li>
+                    <li><a href="#video">Gameplay video</a></li>
+                    <li><a href="#reflection">Reflection</a></li>
+                  </ul>
+                </nav>
+              </details>
+              <nav class="case-toc-desktop case-toc-list" aria-label="On this page (desktop)">
+                <p class="case-toc__title">On this page</p>
+                <ul>
+                  <li><a href="#overview" class="is-active">Overview</a></li>
+                  <li><a href="#problem">Problem</a></li>
+                  <li><a href="#research">Research</a></li>
+                  <li><a href="#audience">Audience &amp; goals</a></li>
+                  <li><a href="#solution">Solution</a></li>
+                  <li><a href="#loop">Core loop</a></li>
+                  <li><a href="#before-after">Before &amp; after</a></li>
+                  <li><a href="#design-process">Design process</a></li>
+                  <li><a href="#architecture">Architecture</a></li>
+                  <li><a href="#tech-stack">Tech stack</a></li>
+                  <li><a href="#testing">Testing</a></li>
+                  <li><a href="#results">Results</a></li>
+                  <li><a href="#accessibility">Accessibility</a></li>
+                  <li><a href="#upgrade-v2">Visual upgrade (v2)</a></li>
+                  <li><a href="#roadmap">Roadmap</a></li>
+                  <li><a href="#video">Gameplay video</a></li>
+                  <li><a href="#reflection">Reflection</a></li>
+                </ul>
+              </nav>
+            </aside>
+
+            <div class="case-main">
+              <h2 id="overview">Overview</h2>
+              <p class="lede">Checkout Rush is a browser-based educational game for ages 7–9 that turns money math into a cashier role-play. Players scan items, read totals, accept payment, and return change—while a timer and customer queue create just enough pressure to feel like a game, not a worksheet.</p>
+              <p>This case study walks from the tutoring problem that sparked the idea through architecture, testing, and the passes that tightened rewards, the shop, first-time onboarding, and a later <a href="#upgrade-v2">visual and UI upgrade</a> to the live experience.</p>
+
+              <h2 id="problem" class="case-h2">The problem</h2>
+              <p>Elementary students often learn money faster when they can manipulate representations of bills and coins—but classroom practice frequently splinters into <strong>isolated drills</strong>. A student might succeed on “quarters make a dollar” and still stall when asked to chain <em>add items → read total → accept payment → make change</em> in order. That gap between <em>procedural pieces</em> and <em>situated use</em> is exactly what national and international assessments keep measuring in different language: not just whether a student can compute, but whether they can deploy math in realistic contexts.</p>
+              <p>Large-scale data back up the stakes. On the U.S. <strong>NAEP</strong> mathematics assessment (grade 4, 2022), average scores were down from 2019, and the share of students at or above the “Proficient” level fell—trend lines that get sharper when the task isn’t a single number sentence but a multi-step, context-heavy problem.<sup>1</sup> Internationally, <strong>PISA</strong> defines <em>mathematical literacy</em> as using mathematics in real settings—including “personal, occupational, and societal” contexts—rather than decontextualized symbol manipulation alone.<sup>2</sup> U.S. policy guidance likewise treats K–12 financial education as a cumulative build: concepts introduced early, reinforced over time, with families and educators as partners—because money skills are rarely learned from one worksheet.<sup>3</sup> Professional teaching guidance also stresses representation, sense-making, and fluency with understanding over isolated procedures—roughly the bar I was aiming for in the HUD, not a worksheet with a new skin.<sup>4</sup></p>
+              <p>That research framing matches what I saw locally: at the <strong>Westlake Public Library</strong>, 2nd–4th graders often had the <em>pieces</em> but not the <em>choreography</em> of a transaction. I wanted a repeatable, low-stakes space to rehearse the <strong>full loop</strong> with immediate feedback—without requiring an install, because if access is hard, practice won’t happen on a school Chromebook.</p>
+
+              <div class="ref-box case-reveal" id="refs-problem" aria-label="Selected research sources">
+                <h3 class="ref-box__title">Sources (problem framing)</h3>
+                <ol class="ref-list">
+                  <li>
+                    <cite>National Center for Education Statistics, <em>NAEP Mathematics: Highlighted results for the nation (grades 4 &amp; 8), 2022</em></cite> — national trends and achievement levels. <a href="https://www.nationsreportcard.gov/highlights/mathematics/2022" target="_blank" rel="noopener noreferrer">nationsreportcard.gov/highlights/mathematics/2022</a>
+                  </li>
+                  <li>
+                    <cite>OECD, <em>PISA 2022 Mathematics Framework</em></cite> (mathematical literacy, use of mathematics in “authentic contexts”). <a href="https://pisa2022-maths.oecd.org/" target="_blank" rel="noopener noreferrer">pisa2022-maths.oecd.org</a>
+                  </li>
+                  <li>
+                    <cite>Consumer Financial Protection Bureau, <em>Advancing K–12 financial education: A guide for policymakers</em></cite> — evidence for early, consistent exposure and system-level support. <a href="https://www.consumerfinance.gov/data-research/research-reports/guide-advancing-k-12-financial-education/" target="_blank" rel="noopener noreferrer">consumerfinance.gov (K–12 guide)</a>
+                  </li>
+                  <li>
+                    <cite>National Council of Teachers of Mathematics, <em>Principles to Actions: Ensuring mathematical success for all</em> (2014)</cite> — productive struggle, representation, and procedural fluency with understanding (positioning for classroom-adjacent practice). <a href="https://www.nctm.org/principlestoactions/" target="_blank" rel="noopener noreferrer">nctm.org/principlestoactions</a>
+                  </li>
+                </ol>
+                <p class="ref-box__note">Citations are for framing only; I did not conduct a district-level study. My claim about tutoring cohort behavior remains in the callout below—local, informal observation.</p>
+              </div>
+
+              <div class="stat-callout case-reveal">
+                <strong>~40%</strong>
+                <span>Of observed tutoring students in my cohort hesitated for more than 10 seconds when switching from “find the total” to “make change”—even when the arithmetic was within their level. (Informal session notes, n=12 over 6 weeks.)</span>
+              </div>
+
+              <h2 id="research">Research &amp; framing</h2>
+              <p>I didn’t run a formal study—I combined library observation, short interviews with parents, and a lightweight competitive scan of free browser math games. Three patterns kept showing up:</p>
+              <ul>
+                <li><strong>Worksheets disguised as games</strong> often keep math abstract; the “game” is a skin, not a mechanic.</li>
+                <li><strong>Many titles avoid coins</strong> or collapse everything into a single “pay” button, which skips the skill I cared about.</li>
+                <li><strong>Kids tolerate timers</strong> when the framing is fair and the controls are obvious—when the timer feels like a rule of the job, not a punishment.</li>
+              </ul>
+              <p>I wrote a one-page product brief: <em>who it’s for</em>, <em>what “better” looks like in one session</em>, and <em>what I would not try to solve</em> (full curriculum coverage, account-based classroom analytics—that’s a later build).</p>
+
+              <h2 id="audience">Audience, personas, goals</h2>
+              <p><strong>Composite persona: “Jordan,” 8.</strong> Comfortable with single-step money questions, easily distracted by busy visuals, motivated by short wins and visible streaks. Plays games on the web at home; school device is a managed Chromebook.</p>
+              <p><strong>Goals</strong></p>
+              <ul>
+                <li>Increase fluency making change with mixed coins and bills up to $50.</li>
+                <li>Keep cognitive load in the math, not the interface.</li>
+                <li>Make failure informative: wrong change should teach, not shame.</li>
+              </ul>
+              <p><strong>Non-goals (v1)</strong></p>
+              <ul>
+                <li>Multiplayer, accounts for every student, or teacher dashboards.</li>
+                <li>Photoreal graphics—clarity beats spectacle on integrated graphics chips.</li>
+              </ul>
+
+              <h2 id="solution">Solution</h2>
+              <p>Checkout Rush places the learner behind the register. The 3D scene provides spatial context; the HUD carries the learning. Difficulty scales across bands so the same core interaction can ramp from friendlier totals to harder mixed-coin challenges.</p>
+              <p>Audio and UI feedback answer three questions instantly: <em>What do I do next?</em> <em>Was I right?</em> <em>How do I recover?</em> If any of those are fuzzy, the educational layer collapses—kids assume they’re “bad at math” instead of “bad at UI.”</p>
+
+              <figure class="figure">
+                <img src="Assets/screenshots/game-store-view.png" width="1200" height="675" alt="Wide shot of the 3D grocery store and checkout counter." />
+                <figcaption>Environment supports the task: counter space stays readable; props don’t fight the HUD for attention.</figcaption>
+              </figure>
+
+              <h3 id="loop">Core interaction loop</h3>
+              <div class="loop-steps">
+                <div class="loop-step"><span>1</span><strong>Scan</strong><p>Build the basket total from priced items.</p></div>
+                <div class="loop-step"><span>2</span><strong>Read</strong><p>Confirm the amount due before taking payment.</p></div>
+                <div class="loop-step"><span>3</span><strong>Pay in</strong><p>Watch what the customer hands over.</p></div>
+                <div class="loop-step"><span>4</span><strong>Change out</strong><p>Select coins and bills to return; submit when confident.</p></div>
+              </div>
+              <p>Each loop ends with scoring, streak updates, and a new customer—so the skill repeats without feeling like the same screen copy-pasted.</p>
+
+              <figure class="figure">
+                <div class="two-col two-col--flush">
+                  <img src="Assets/screenshots/game-title-screen.png" width="600" height="338" alt="Title screen with Checkout Rush logo." />
+                  <img src="Assets/screenshots/game-play-hud.png" width="600" height="338" alt="Gameplay HUD with score and coin controls." />
+                </div>
+                <figcaption>Left: promise of the experience in one line. Right: math tools adjacent to the task so eyes don’t hunt.</figcaption>
+              </figure>
+
+              <div class="btn-row">
+                <a class="btn btn--primary" href="https://checkoutrush.netlify.app/" target="_blank" rel="noopener noreferrer">Open the live build</a>
+                <a class="btn btn--ghost" href="https://github.com/NATcodakid/Checkout-Rush" target="_blank" rel="noopener noreferrer">Browse source</a>
+              </div>
+
+              <h2 id="before-after" class="case-h2 case-reveal">Before &amp; after</h2>
+              <p class="case-reveal">The live game is the <strong>v2</strong> experience, but the design story is a delta: earlier HUDs carried the same math with less room for error copy and environmental read. The slider compares <strong>the pay / change moment</strong> (earlier in-game still vs. the expanded v2 surface). The stills below show <strong>the same aisle idea</strong> with the graybox-to-stylized store pass.</p>
+              <div class="compare case-reveal" data-compare role="group" aria-label="Before and after: drag the slider to compare v1-style HUD and v2 pay and change.">
+                <div class="compare__inner">
+                  <img class="compare__base" src="Assets/screenshots/checkout-rush-v2-change-ui.png" width="1200" height="675" alt="After: v2 transaction stack with line items, change due, oops state." loading="lazy" />
+                  <div class="compare__before" style="--p: 50%">
+                    <img src="Assets/screenshots/game-play-hud.png" width="1200" height="675" alt="" loading="lazy" />
+                  </div>
+                  <div class="compare__gutter" style="--pos: 50%"></div>
+                </div>
+                <div class="compare__chrome">
+                  <span class="compare__badge compare__badge--before">Before · v1-style HUD (still)</span>
+                  <div class="compare__control">
+                    <label class="visually-hidden" for="compare-slider">Drag to compare before and after</label>
+                    <input class="compare__range" type="range" id="compare-slider" name="before-after" min="0" max="100" value="50" step="0.1" />
+                  </div>
+                  <span class="compare__badge compare__badge--after">After · v2 pay &amp; change</span>
+                </div>
+              </div>
+
+              <div class="before-after-grid case-reveal">
+                <figure class="before-after-tile">
+                  <img src="Assets/screenshots/game-store-view.png" width="800" height="450" alt="Before: flatter, graybox-style store and checkout read." loading="lazy" />
+                  <figcaption>Before — early environment (still from v1 build)</figcaption>
+                </figure>
+                <figure class="before-after-tile">
+                  <img src="Assets/screenshots/checkout-rush-v2-scene-roblox.png" width="800" height="450" alt="After: stylized 3D store with neon grid and clearer props." loading="lazy" />
+                  <figcaption>After — v2 pass (grid, register, aisle density, character)</figcaption>
+                </figure>
+              </div>
+
+              <h2 id="design-process" class="case-h2 case-reveal">Design process</h2>
+              <p class="case-kicker">How the idea evolved</p>
+              <ol class="timeline">
+                <li><strong>Weeks 1–2 — Paper + spreadsheet</strong> I mocked rounds as rows: item prices, expected totals, allowed denominations. If I couldn’t explain a round on paper, it didn’t go into the build.</li>
+                <li><strong>Weeks 3–5 — Interaction shell</strong> Built the HUD and money logic with initial art. If the numbers weren’t honest, 3D wouldn’t save it.</li>
+                <li><strong>Weeks 6–8 — Three.js scene</strong> Added environment, lighting, and item highlighting. Performance-first: aggressive instancing, conservative textures.</li>
+                <li><strong>Weeks 9–10 — Playtests</strong> Ran timed sessions; tracked confusion points on a simple rubric (orientation, calculation, control).</li>
+                <li><strong>Weeks 11–12 — Ship + harden</strong> GitHub Pages deploy, bug bash, then the post-launch polish pass on rewards and shop systems.</li>
+              </ol>
+
+              <h3>Information architecture</h3>
+              <ul class="pill-list">
+                <li>Title → difficulty → round loop</li>
+                <li>HUD layer (persistent)</li>
+                <li>Shop / meta layer (unlocks)</li>
+                <li>Settings (audio, later accessibility)</li>
+              </ul>
+
+              <h2 id="architecture">System architecture</h2>
+              <p>A deliberately boring stack: static hosting, client-side game loop, optional cloud persistence. No custom servers to babysit during a semester-long class project.</p>
+              <pre class="arch-diagram" tabindex="0"><span class="dim">┌──────────────────────────────────────────────────────────┐</span>
+│  Browser (GitHub Pages)                                  │
+│  ┌────────────┐   ┌─────────────┐   ┌──────────────────┐  │
+│  │ index.html │ → │  main.js    │ ↔ │  Three.js scene  │  │
+│  │  styles    │   │  game logic │   │  meshes / lights │  │
+│  └────────────┘   │  HUD / shop │   └──────────────────┘  │
+│                   └──────┬──────┘                         │
+│                          │ Web Audio (SFX + feedback)      │
+│                          ▼                                │
+│                   ┌──────────────┐                        │
+│                   │   Firebase   │  progress / shop     │
+│                   │  (optional)  │  persistence         │
+│                   └──────────────┘                        │
+└──────────────────────────────────────────────────────────┘</pre>
+
+              <h2 id="tech-stack">Tech stack &amp; rationale</h2>
+              <div class="table-scroll">
+                <table class="tech-table">
+                  <thead>
+                    <tr><th>Layer</th><th>Choice</th><th>Why</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Runtime</td><td>HTML / CSS / ES modules</td><td>Zero build step for classmates and teachers to open a link.</td></tr>
+                    <tr><td>3D</td><td>Three.js</td><td>Mature community, examples for materials, easy to profile in DevTools.</td></tr>
+                    <tr><td>State</td><td>Vanilla JS modules</td><td>Transparent data flow while debugging kid-reported issues.</td></tr>
+                    <tr><td>Data</td><td>Firebase / Firestore</td><td>Lightweight persistence for cosmetics and future leaderboards.</td></tr>
+                    <tr><td>Audio</td><td>Web Audio API</td><td>Low-latency feedback beats playing long MP3 stingers.</td></tr>
+                    <tr><td>Ship</td><td>GitHub Pages</td><td>Same workflow as the rest of my coursework repos.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h3>Key engineering decisions</h3>
+              <div class="table-scroll">
+                <table class="comparison-table">
+                  <thead>
+                    <tr><th>Decision</th><th>Alternative</th><th>Outcome</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Difficulty bands</td><td>Single linear level list</td><td>Cleaner mapping between math skills and content batches.</td></tr>
+                    <tr><td>HUD-first layout</td><td>Diegetic-only UI</td><td>Faster tutoring—kids found numbers quickly in testing.</td></tr>
+                    <tr><td>Static hosting</td><td>Node backend</td><td>Less ops risk; aligns with “open and play” goal.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p><strong>Hardest integration challenge:</strong> keeping one authoritative transaction state across pointer events, 3D raycasts, and audio cues. My approach was small, pure functions for money math, a single “round controller,” and loud assertions in development builds when state drifted.</p>
+
+              <h2 id="testing">Testing, rubrics, iteration</h2>
+              <p>I ran <strong>24+ supervised sessions</strong> across family friends, library contacts, and coding-club peers. Sessions were 8–14 minutes, usually three back-to-back rounds with a 60-second debrief.</p>
+              <p>Each session scored (0–2) on three axes: <strong>orientation</strong> (did they know the next action?), <strong>accuracy</strong> (correct change), <strong>recovery</strong> (after a mistake, could they self-correct?). Those numbers are rough—but directionally they showed where the UI failed before the math did.</p>
+
+              <div class="feedback-block">
+                <p class="label">Signal</p>
+                <p>Engagement spiked when the cashier fantasy felt coherent: sound + score + “next customer” read as one system.</p>
+              </div>
+              <div class="feedback-block">
+                <p class="label">Friction</p>
+                <p>Early builds hid the “scan items” step; first-time players stared at the empty counter. That’s what drove the glowing item cue and first-round prompt.</p>
+              </div>
+
+              <blockquote>
+                “Wait, this is math? I thought we were just playing the store game.”
+                <cite>— Elementary playtester (grades 2–4 cohort)</cite>
+              </blockquote>
+
+              <h3>Post-launch polish (evaluation pass)</h3>
+              <p>After release, I audited reward fairness and shop systems—kids shouldn’t feel rewarded for wrong math. Highlights:</p>
+              <ul>
+                <li><strong>Coin economy tied to correctness</strong> — wrong change grants zero coins; streaks still reward genuine improvement.</li>
+                <li><strong>Cash drawer respects level config</strong> — <code class="kbd">moneyOptions</code> filters what appears so players aren’t handed denominations they haven’t earned.</li>
+                <li><strong>Shop items activate</strong> — consumables on purchase; wallpapers selectable; Firestore stores <code class="kbd">activeWallpaper</code>.</li>
+                <li><strong>Onboarding</strong> — “Click items to scan” on round one; pulsing highlight on unscanned products.</li>
+                <li><strong>Cosmetics persist</strong> — golden scanner / wallpaper survive menu navigation.</li>
+              </ul>
+
+              <div class="table-scroll">
+                <table class="iteration-table">
+                  <thead>
+                    <tr><th>Phase</th><th>Focus</th><th>What moved</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Alpha</td><td>Math fidelity</td><td>Edge cases on quarters + nickels; rounding rules</td></tr>
+                    <tr><td>Beta</td><td>Readability</td><td>HUD contrast, font sizes on 1366×768</td></tr>
+                    <tr><td>RC</td><td>Performance</td><td>Texture sizes, draw call budget</td></tr>
+                    <tr><td>1.0</td><td>Ship</td><td>GitHub Pages + smoke tests on Chromebook</td></tr>
+                    <tr><td>1.1</td><td>Fairness + shop</td><td>Coin rules, consumables, wallpaper persistence</td></tr>
+                    <tr><td>2.0</td><td>Visual &amp; UI pass</td><td>Denser store, character polish, expanded transaction HUD, strikes + hints</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h2 id="upgrade-v2" class="case-h2 case-reveal">Visual &amp; interaction upgrade (v2)</h2>
+              <p class="case-reveal">The <a href="#before-after">before &amp; after</a> block above is the high-level diff; the stills and notes here unpack what moved in the v2 pass. After the first public build and the fairness/shop pass, I pushed a second major refresh focused on <strong>readability, character presence, and end-to-end transaction UI</strong>. The goal was for the store to read as a complete space—not a graybox—and for every step of the money loop to have a clear, readable surface on 1366×768 school laptops.</p>
+              <p>The scene now leans into a <strong>bright, stylized 3D look</strong> (shelves read at a glance, counter materials pop), while the <strong>HUD</strong> tracks score, streak, customers, a yellow countdown timer, strikes, and audio in one top bar. A floating <strong>receipt</strong> anchors the math: line items, running total, and color emphasis where it matters. On the belt, a <strong>neon grid</strong> and clearer product reads make “what to scan” obvious without extra text.</p>
+              <p>On the interaction side, the <strong>Customer pays / give change</strong> panel is fully surfaced: a coin-and-bill grid, change due vs. what the customer paid, <strong>Give change</strong> and <strong>Clear</strong>, plus a <strong>hint</strong> costed in coins. When the math is off, a pill-shaped <strong>“Oops”</strong> message spells the expected change so failure stays instructive, not punishing. Follow-up playtests: same rubric, but players spent less time hunting controls and more time on the actual arithmetic—exactly the tradeoff I was aiming for.</p>
+
+              <figure class="figure">
+                <img src="Assets/screenshots/checkout-rush-v2-scene-roblox.png" width="1024" height="543" alt="Wide checkout scene: conveyor with green grid, purple register, customer character, stocked aisles, top HUD and receipt." />
+                <figcaption><strong>Store pass.</strong> Counter, register, and aisle density so the “cashier at work” read is instant. Receipt + top HUD keep totals and time visible without opening another screen.</figcaption>
+              </figure>
+
+              <figure class="figure">
+                <div class="two-col two-col--flush">
+                  <img src="Assets/screenshots/checkout-rush-v2-change-ui.png" width="1024" height="543" alt="Transaction UI with customer pay amount, change due, coin and bill grid, oops error toast." />
+                  <img src="Assets/screenshots/checkout-rush-v2-robot-donut.png" width="1024" height="543" alt="Robot customer with receipt for donut, floating positive score text, full HUD and strikes." />
+                </div>
+                <figcaption><strong>End-to-end loop.</strong> Left: full pay/change surface with error feedback. Right: receipt-driven round with in-world +score feedback and strike strip for mistakes.</figcaption>
+              </figure>
+
+              <h2 id="results">Outcomes &amp; metrics</h2>
+              <p>Sample sizes are small—this is a student project, not a district pilot. Treat headline numbers as directional.</p>
+              <div class="results-grid results-grid--4">
+                <div class="result-card"><strong>6</strong><span>Unique child testers</span></div>
+                <div class="result-card"><strong>10–12 min</strong><span>Median session</span></div>
+                <div class="result-card"><strong>+22%</strong><span>Median accuracy lift round 1 → 3 (rubric)</span></div>
+                <div class="result-card"><strong>4.2 / 5</strong><span>Informal “fun” rating</span></div>
+              </div>
+              <p>The metric I cared about most was qualitative: students narrated the job (“I’m the cashier”) instead of narrating the worksheet (“I picked B”). That’s the behavioral signal I wanted—because it predicts willingness to repeat practice.</p>
+
+              <div class="pull-quote">
+                <p>“If it feels fair, they’ll try again. If it feels random, they blame themselves and quit.”</p>
+                <cite>— Note from my post-session journal (week 9)</cite>
+              </div>
+
+              <h2 id="accessibility">Accessibility &amp; inclusion</h2>
+              <ul>
+                <li><strong>Large touch targets</strong> on coin and bill buttons; spacing tuned on 11″ Chromebooks.</li>
+                <li><strong>Color is not the only signal</strong> — icons + text on key HUD labels.</li>
+                <li><strong>Motion</strong> — item pulse can be reduced in a future setting; I avoided camera shake for error states.</li>
+                <li><strong>Audio</strong> — distinct SFX for success vs. mistake so color-blind players still get feedback.</li>
+              </ul>
+
+              <h2 id="risks">Risks &amp; mitigations</h2>
+              <div class="risk-grid">
+                <div class="risk-card">
+                  <h4>Integrated graphics</h4>
+                  <p>Kept textures small, limited overdraw, tested on a 6-year-old laptop borrowed from a friend’s family.</p>
+                </div>
+                <div class="risk-card">
+                  <h4>Classroom Wi‑Fi</h4>
+                  <p>Game playable offline once loaded; Firebase features degrade gracefully when blocked by school filters.</p>
+                </div>
+                <div class="risk-card">
+                  <h4>“Educational game” skepticism</h4>
+                  <p>Documented learning intent, rubric, and iteration here so reviewers see process—not just a trailer.</p>
+                </div>
+                <div class="risk-card">
+                  <h4>Scope creep</h4>
+                  <p>Cut multiplayer, accounts, and teacher dashboards for v1. Roadmapped instead of half-shipped.</p>
+                </div>
+              </div>
+
+              <h2 id="roadmap">Roadmap</h2>
+              <ol>
+                <li><strong>Teacher snapshot</strong> — printable summary: levels played, accuracy trend, time on task.</li>
+                <li><strong>Assist mode</strong> — optional number line for change-making without removing the core task.</li>
+                <li><strong>More store layouts</strong> — same math, different visual noise to test transfer.</li>
+                <li><strong>Localization hook</strong> — separate copy from layout for future languages.</li>
+              </ol>
+
+              <h2 id="video">Gameplay video</h2>
+              <p>Full capture of a live session—menus, rounds, HUD, and shop touchpoints. The poster frame is from the <strong>v2</strong> transaction UI; newer stills in the <a href="#upgrade-v2">visual upgrade</a> section match this build.</p>
+              <div class="video-wrap">
+                <video controls preload="metadata" poster="Assets/screenshots/checkout-rush-v2-change-ui.png">
+                  <source src="Assets/videos/checkout-rush-gameplay.mp4" type="video/mp4" />
+                  <a href="Assets/videos/checkout-rush-gameplay.mp4">Download MP4</a>
+                </video>
+              </div>
+              <p class="video-download"><a href="Assets/videos/checkout-rush-gameplay.mp4">Download gameplay video (.mp4)</a></p>
+
+              <h2 id="reflection">Reflection</h2>
+              <p><strong>Technical:</strong> I got faster at the unglamorous work—state machines, profiling, and writing errors kids can act on. Three.js is powerful, but the HUD still carried the learning.</p>
+              <p><strong>Product:</strong> The best compliment wasn’t “cool graphics”—it was kids negotiating turns to play again. That’s the loop working.</p>
+              <p><strong>Next:</strong> more diverse playtesters (including students who find money math actively discouraging), then ship a teacher-facing summary page. If the data holds, I’ll pitch a local classroom pilot.</p>
+
+              <div class="case-cta case-reveal">
+                <h2>Try it yourself</h2>
+                <p>Play the build, read the source, and if you’re evaluating this portfolio: the artifacts on this page map to folders and commits in the repo.</p>
+                <div class="btn-row">
+                  <a class="btn btn--primary" href="https://checkoutrush.netlify.app/" target="_blank" rel="noopener noreferrer">Play Checkout Rush</a>
+                  <a class="btn btn--ghost" href="https://github.com/NATcodakid/Checkout-Rush" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>Built by John Johnson with HTML, CSS &amp; TypeScript.</p>
+      </div>
+    </footer>
+  </div>
+  <script src="js/main.js" defer></script>
+  <script src="js/ui-pro.js" defer></script>
+  <script src="js/case-study.js" defer></script>
+</body>
+</html>

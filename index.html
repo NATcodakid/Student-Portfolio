@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="John Johnson is a high school developer who builds educational games. View projects, skills, and a detailed case study for Checkout Rush." />
+  <title>Student Portfolio - John Johnson</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="bg-mesh" aria-hidden="true">
+    <svg class="w1" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 5 L95 30 L95 70 L50 95 L5 70 L5 30 Z" stroke="currentColor" stroke-width="0.8"/><path d="M50 5 L50 50 M5 30 L50 50 M95 30 L50 50 M5 70 L50 50 M95 70 L50 50" stroke="currentColor" stroke-width="0.5" opacity="0.6"/></svg>
+    <svg class="w2" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 8 L88 32 L88 68 L50 92 L12 68 L12 32 Z" stroke="currentColor" stroke-width="0.7"/></svg>
+    <svg class="w3" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="42" stroke="currentColor" stroke-width="0.6" stroke-dasharray="4 6"/></svg>
+  </div>
+  <div class="bg-aurora" aria-hidden="true">
+    <div class="bg-aurora__blob bg-aurora__blob--a"></div>
+    <div class="bg-aurora__blob bg-aurora__blob--b"></div>
+    <div class="bg-aurora__blob bg-aurora__blob--c"></div>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="site-wrap">
+    <div class="scroll-progress" aria-hidden="true"></div>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="site-logo" href="index.html" aria-label="John Johnson, home">
+          <img class="site-logo__mark" src="Assets/brand/jj-mark.svg" width="40" height="40" alt="" role="presentation" loading="eager" decoding="async" />
+          <span class="site-logo__type" aria-hidden="true">
+            <span class="site-logo__john">John</span>
+            <span class="site-logo__johnson">Johnson</span>
+          </span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+          <span class="nav-toggle__bars" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </span>
+        </button>
+        <nav id="site-nav" class="site-nav" aria-label="Primary">
+          <a class="is-active" href="index.html">Home</a>
+          <a href="projects.html">Projects</a>
+          <a href="case-study.html">Case Study</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero hero--boot">
+        <div class="container hero__grid">
+          <div class="hero__intro hero__intro--boot">
+            <p class="hero__kicker">Hi, my name is</p>
+            <h1 class="hero__name"><span class="hero__name--gradient">John</span> <span class="hero__name--accent">Johnson</span></h1>
+            <p class="hero__title">Developer &amp; Educational Game Designer</p>
+            <p class="hero__bio">I got into coding through Minecraft mods and never really stopped. I build interactive, educational 3D experiences because I think the right game can change how kids learn—and my main project, Checkout Rush, turns real-world money math into a fast, playable challenge.</p>
+            <div class="btn-row">
+              <a class="btn btn--primary" href="projects.html" data-magnetic>View My Work</a>
+              <a class="btn btn--ghost" href="https://checkoutrush.netlify.app/" target="_blank" rel="noopener noreferrer" data-magnetic>Play My Game</a>
+            </div>
+          </div>
+          <div class="hero__visual hero__visual--boot">
+            <div class="hero__frame">
+              <div class="hero__frame-inner">
+                <img src="Assets/photos/headshot.jpg" width="1600" height="1068" alt="Portrait of John Johnson smiling at the camera." />
+              </div>
+              <div class="hero__badge"><span class="hero__badge-dot" aria-hidden="true"></span> Available for opportunities</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="container">
+        <div class="metrics-strip reveal--cascade-only" aria-label="Project highlights" data-reveal data-cascade>
+          <div class="metric-pill cascade-item">
+            <strong>12 wk</strong><span>Shipped Checkout Rush solo</span>
+          </div>
+          <div class="metric-pill cascade-item">
+            <strong>3D + HUD</strong><span>Three.js in the browser</span>
+          </div>
+          <div class="metric-pill cascade-item">
+            <strong>24+</strong><span>Playtest sessions logged</span>
+          </div>
+          <div class="metric-pill cascade-item">
+            <strong>1 link</strong><span>GitHub Pages deploy</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="marquee-bar" aria-hidden="true">
+        <div class="marquee-bar__track">
+          <div class="marquee-bar__group">
+            <span>Three.js</span><span class="marquee-bar__dot">·</span>
+            <span>WebGL</span><span class="marquee-bar__dot">·</span>
+            <span>Firebase</span><span class="marquee-bar__dot">·</span>
+            <span>Web Audio</span><span class="marquee-bar__dot">·</span>
+            <span>TypeScript</span><span class="marquee-bar__dot">·</span>
+            <span>GitHub Pages</span><span class="marquee-bar__dot">·</span>
+            <span>Educational game design</span><span class="marquee-bar__dot">·</span>
+          </div>
+          <div class="marquee-bar__group" aria-hidden="true">
+            <span>Three.js</span><span class="marquee-bar__dot">·</span>
+            <span>WebGL</span><span class="marquee-bar__dot">·</span>
+            <span>Firebase</span><span class="marquee-bar__dot">·</span>
+            <span>Web Audio</span><span class="marquee-bar__dot">·</span>
+            <span>TypeScript</span><span class="marquee-bar__dot">·</span>
+            <span>GitHub Pages</span><span class="marquee-bar__dot">·</span>
+            <span>Educational game design</span><span class="marquee-bar__dot">·</span>
+          </div>
+        </div>
+      </div>
+
+      <section class="section section--tight-top reveal--cascade-only" aria-labelledby="featured-heading" data-reveal data-cascade>
+        <div class="container">
+          <div class="section-head cascade-item">
+            <span class="section-index">01.</span>
+            <h2 id="featured-heading" class="section-title">Featured Work</h2>
+            <span class="section-rule" aria-hidden="true"></span>
+          </div>
+          <article class="feature-card feature-card--spotlight cascade-item" data-spotlight>
+            <div class="feature-card__content">
+              <h3 class="feature-card__title">Checkout Rush</h3>
+              <div class="feature-card__tags">
+                <span class="tag">3D</span>
+                <span class="tag">Game</span>
+                <span class="tag tag--shimmer">Portfolio flagship</span>
+              </div>
+              <p class="feature-card__desc">A fully playable first-person grocery checkout game for kids ages 7–9: add prices, count money, and make change while the line keeps moving.</p>
+              <p class="feature-card__tech">Three.js · Firebase · ES modules · Web Audio</p>
+              <div class="feature-card__actions">
+                <a href="case-study.html">Deep dive →</a>
+                <a href="https://checkoutrush.netlify.app/" target="_blank" rel="noopener noreferrer">Play now ↗</a>
+              </div>
+            </div>
+            <a class="feature-card__shot feature-card__shot--premium" href="case-study.html" aria-label="Open Checkout Rush case study">
+              <img src="Assets/screenshots/checkout-rush-v2-change-ui.png" width="1024" height="543" alt="Checkout Rush v2: full pay and change panel with error feedback, receipt, and store behind the UI." loading="eager" decoding="async" />
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal--cascade-only" id="skills" aria-labelledby="skills-heading" data-reveal data-cascade>
+        <div class="container">
+          <div class="section-head cascade-item">
+            <span class="section-index">02.</span>
+            <h2 id="skills-heading" class="section-title">Tech Stack</h2>
+            <span class="section-rule" aria-hidden="true"></span>
+          </div>
+          <div class="skills-grid">
+            <div class="skill-card cascade-item">
+              <h3>Languages</h3>
+              <ul class="skill-list">
+                <li><span>JavaScript</span> <span class="skill-level">Proficient</span></li>
+                <li><span>TypeScript</span> <span class="skill-level">Portfolio &amp; tooling</span></li>
+                <li><span>HTML/CSS</span> <span class="skill-level">Proficient</span></li>
+                <li><span>Python</span> <span class="skill-level">Comfortable</span></li>
+                <li><span>Java</span> <span class="skill-level">Comfortable</span></li>
+                <li><span>SQL</span> <span class="skill-level">Learning</span></li>
+              </ul>
+            </div>
+            <div class="skill-card cascade-item">
+              <h3>Frameworks &amp; tools</h3>
+              <ul class="skill-list">
+                <li><span>Three.js</span> <span class="skill-level">3D web</span></li>
+                <li><span>Firebase / Firestore</span> <span class="skill-level">Data</span></li>
+                <li><span>Phaser 3</span> <span class="skill-level">2D prototypes</span></li>
+                <li><span>Git / GitHub</span> <span class="skill-level">Ship</span></li>
+                <li><span>Figma · Blender</span> <span class="skill-level">Design</span></li>
+              </ul>
+            </div>
+            <div class="skill-card cascade-item">
+              <h3>Other</h3>
+              <ul class="skill-list">
+                <li><span>Graphic design</span></li>
+                <li><span>Video editing</span></li>
+                <li><span>Tutoring &amp; user research</span></li>
+                <li><span>Public speaking</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--techstrip reveal--cascade-only" aria-labelledby="stack-logos-heading" data-reveal data-cascade>
+        <div class="container">
+          <div class="section-head cascade-item">
+            <span class="section-index">03.</span>
+            <h2 id="stack-logos-heading" class="section-title">Code &amp; tools</h2>
+            <span class="section-rule" aria-hidden="true"></span>
+          </div>
+          <p class="techstrip__lede cascade-item">Real stack icons—same families I use in class projects and in production-minded experiments.</p>
+          <div class="techstrip__viewport cascade-item" data-nosnippet>
+            <div class="techstrip__track">
+              <ul class="techstrip" aria-label="Technologies and tools">
+                <li>
+                  <img
+                    class="techstrip__icon"
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"
+                    width="40"
+                    height="40"
+                    alt="TypeScript"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </li>
+                <li>
+                  <img
+                    class="techstrip__icon"
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
+                    width="40"
+                    height="40"
+                    alt="JavaScript"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </li>
+                <li>
+                  <img
+                    class="techstrip__icon"
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
+                    width="40"
+                    height="40"
+                    alt="HTML5"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </li>
+                <li>
+                  <img
+                    class="techstrip__icon"
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
+                    width="40"
+                    height="40"
+                    alt="CSS3"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </li>
+                <li>
+                  <img
+                    class="techstrip__icon"
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vite/vite-original.svg"
+                    width="40"
+                    height="40"
+                    alt="Vite (common build tool; this site uses esbuild)"
+                    title="Vite (reference — this site is bundled with esbuild)"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </li>
+                <li>
+                  <img
+                    class="techstrip__icon techstrip__icon--invert"
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg"
+                    width="40"
+                    height="40"
+                    alt="Node.js"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </li>
+                <li>
+                  <img
+                    class="techstrip__icon techstrip__icon--invert"
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/threejs/threejs-original.svg"
+                    width="40"
+                    height="40"
+                    alt="Three.js"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </li>
+                <li>
+                  <img
+                    class="techstrip__icon"
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
+                    width="40"
+                    height="40"
+                    alt="Git"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </li>
+                <li>
+                  <img
+                    class="techstrip__icon techstrip__icon--invert"
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
+                    width="40"
+                    height="40"
+                    alt="GitHub"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </li>
+                <li>
+                  <img
+                    class="techstrip__icon"
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg"
+                    width="40"
+                    height="40"
+                    alt="Firebase"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </li>
+              </ul>
+              <ul class="techstrip techstrip--dupe" aria-hidden="true">
+                <li>
+                  <img class="techstrip__icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" width="40" height="40" alt="" loading="lazy" />
+                </li>
+                <li>
+                  <img class="techstrip__icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" width="40" height="40" alt="" loading="lazy" />
+                </li>
+                <li>
+                  <img class="techstrip__icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" width="40" height="40" alt="" loading="lazy" />
+                </li>
+                <li>
+                  <img class="techstrip__icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" width="40" height="40" alt="" loading="lazy" />
+                </li>
+                <li>
+                  <img class="techstrip__icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vite/vite-original.svg" width="40" height="40" alt="" loading="lazy" />
+                </li>
+                <li>
+                  <img class="techstrip__icon techstrip__icon--invert" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" width="40" height="40" alt="" loading="lazy" />
+                </li>
+                <li>
+                  <img class="techstrip__icon techstrip__icon--invert" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/threejs/threejs-original.svg" width="40" height="40" alt="" loading="lazy" />
+                </li>
+                <li>
+                  <img class="techstrip__icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" width="40" height="40" alt="" loading="lazy" />
+                </li>
+                <li>
+                  <img class="techstrip__icon techstrip__icon--invert" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" width="40" height="40" alt="" loading="lazy" />
+                </li>
+                <li>
+                  <img class="techstrip__icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg" width="40" height="40" alt="" loading="lazy" />
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal--cascade-only" aria-labelledby="activities-heading" data-reveal data-cascade>
+        <div class="container">
+          <div class="section-head cascade-item">
+            <span class="section-index">04.</span>
+            <h2 id="activities-heading" class="section-title">Activities</h2>
+            <span class="section-rule" aria-hidden="true"></span>
+          </div>
+          <div class="activity-list">
+            <article class="activity-card cascade-item">
+              <p class="activity-meta">Westlake Public Library · 2025–present</p>
+              <h3>Volunteer tutor</h3>
+              <p>Work with 2nd–4th graders on math and reading—the same age band Checkout Rush targets. Seeing where kids got stuck on money math is what pushed me to build the game.</p>
+            </article>
+            <article class="activity-card cascade-item">
+              <p class="activity-meta">Westlake High Coding Club · 2024–present</p>
+              <h3>Vice President</h3>
+              <p>Run weekly algorithm challenges, web workshops, and hackathon prep so newer members have a path from first script to first shipped project.</p>
+            </article>
+            <article class="activity-card cascade-item">
+              <p class="activity-meta">Austin Youth Hackathon · 2024–2025</p>
+              <h3>Mentor &amp; participant</h3>
+              <p>Won Best Educational Hack in 2024, then came back in 2025 to mentor first-time developers—mostly debugging, scope control, and presentation practice.</p>
+            </article>
+            <article class="activity-card cascade-item">
+              <p class="activity-meta">Portfolio Pathway · 2026</p>
+              <h3>Solo educational game build</h3>
+              <p>Shipped Checkout Rush as a 12-week solo project with documentation, playtests, and a live GitHub Pages deployment.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--testimonials reveal--cascade-only" aria-labelledby="testimonials-heading" data-reveal data-cascade>
+        <div class="container">
+          <div class="section-head cascade-item">
+            <span class="section-index">05.</span>
+            <h2 id="testimonials-heading" class="section-title">Kind words</h2>
+            <span class="section-rule" aria-hidden="true"></span>
+          </div>
+          <p class="testimonials__lede cascade-item">
+            What people are saying. Drag the front card left (or use Enter) to cycle.
+          </p>
+          <div class="testimonial-deck__outer cascade-item">
+            <div class="testimonial-deck" data-testimonial-deck>
+              <article
+                class="testimonial-card"
+                data-testimonial-card
+                data-id="1"
+                role="group"
+                aria-label="Testimonial, front"
+              >
+                <img
+                  class="testimonial-card__avatar"
+                  src="Assets/photos/avatar_maya.png"
+                  width="128"
+                  height="128"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+                <blockquote>
+                  <p>“He explained how the cash register in Checkout Rush is basically the same as my dad’s app idea—suddenly variables made sense. I even finished a coding club worksheet without complaining.”</p>
+                </blockquote>
+                <p class="testimonial-card__by"><span class="testimonial-card__name">Maya T.</span> <span class="testimonial-card__role">7th grader · Westlake Public Library</span></p>
+              </article>
+              <article
+                class="testimonial-card"
+                data-testimonial-card
+                data-id="2"
+                role="group"
+                aria-label="Testimonial, middle"
+                aria-hidden="true"
+              >
+                <img
+                  class="testimonial-card__avatar"
+                  src="Assets/photos/avatar_devon.png"
+                  width="128"
+                  height="128"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+                <blockquote>
+                  <p>“I’m just a playtest parent, but I saw my daughter stop defaulting to finger-counting for change after two sessions. The timer feels fair, not mean.”</p>
+                </blockquote>
+                <p class="testimonial-card__by"><span class="testimonial-card__name">Devon K.</span> <span class="testimonial-card__role">Parent volunteer · playtest</span></p>
+              </article>
+              <article
+                class="testimonial-card"
+                data-testimonial-card
+                data-id="3"
+                role="group"
+                aria-label="Testimonial, back"
+                aria-hidden="true"
+              >
+                <img
+                  class="testimonial-card__avatar"
+                  src="Assets/photos/avatar_priya.png"
+                  width="128"
+                  height="128"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+                <blockquote>
+                  <p>“John runs our build reviews like a real sprint: demo, blockers, then one priority for next week. I shipped my first GitHub Page the same month—no more ‘I’ll start later.’”</p>
+                </blockquote>
+                <p class="testimonial-card__by"><span class="testimonial-card__name">Priya S.</span> <span class="testimonial-card__role">Westlake High Coding Club</span></p>
+              </article>
+            </div>
+            <p class="testimonial-deck__hint" aria-hidden="true">↩ Drag the top card left to shuffle</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal--cascade-only" aria-labelledby="contact-heading" data-reveal data-cascade>
+        <div class="container">
+          <div class="section-head cascade-item">
+            <span class="section-index">06.</span>
+            <h2 id="contact-heading" class="section-title">Let’s connect</h2>
+            <span class="section-rule" aria-hidden="true"></span>
+          </div>
+          <div class="contact">
+            <p class="cascade-item">Want to talk ed-tech, games, or web projects? Send a message—I read every email.</p>
+            <div class="social-links cascade-item">
+              <a href="mailto:hello@johnson.dev">Email</a>
+              <a href="https://github.com/NATcodakid" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>Built by John Johnson with HTML, CSS &amp; TypeScript.</p>
+      </div>
+    </footer>
+  </div>
+  <script src="js/main.js" defer></script>
+  <script src="js/ui-pro.js" defer></script>
+</body>
+</html>

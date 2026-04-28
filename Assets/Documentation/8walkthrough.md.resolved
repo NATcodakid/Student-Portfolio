@@ -1,0 +1,56 @@
+# Checkout Rush — Fix Walkthrough
+
+All items identified in the evaluation report have been implemented.
+
+---
+
+## Changes by File
+
+### [gameData.js](file:///Users/natashaharris/Downloads/educational-game/projects/checkout-rush/js/gameData.js) — 1 fix
+- **Wrong-answer coins → 0**: [calculateCoins()](file:///Users/natashaharris/Downloads/educational-game/projects/checkout-rush/js/gameData.js#67-75) now returns `0` for incorrect answers instead of `base * 0.2`. Correct answers still earn `base + streak * 2` coins. Math needs to matter.
+
+### [shop.js](file:///Users/natashaharris/Downloads/educational-game/projects/checkout-rush/js/shop.js) — Complete rewrite of Shop class
+- **Consumables now actually activate**: [activateConsumable()](file:///Users/natashaharris/Downloads/educational-game/projects/checkout-rush/js/shop.js#161-170) still exists, but it's now wired up from the buy handler in [main.js](file:///Users/natashaharris/Downloads/educational-game/projects/checkout-rush/js/main.js) — see below.
+- **Wallpaper selection is now explicit**: New [setActiveWallpaper(wpValue)](file:///Users/natashaharris/Downloads/educational-game/projects/checkout-rush/js/shop.js#175-180), [getOwnedWallpapers()](file:///Users/natashaharris/Downloads/educational-game/projects/checkout-rush/js/shop.js#201-207), and updated [getActiveWallpaper()](file:///Users/natashaharris/Downloads/educational-game/projects/checkout-rush/js/shop.js#181-200) that respects an explicit user choice. Falls back to first-owned wallpaper if none set.
+- **Firestore persistence**: `activeWallpaper` is now included in [getSerializable()](file:///Users/natashaharris/Downloads/educational-game/projects/checkout-rush/js/shop.js#130-137) and [loadFromFirestore()](file:///Users/natashaharris/Downloads/educational-game/projects/checkout-rush/js/shop.js#124-129).
+- **Default wallpaper config**: Added `WALLPAPER_CONFIGS['default']` so the scene can be reset cleanly.
+
+### [main.js](file:///Users/natashaharris/Downloads/educational-game/projects/checkout-rush/js/main.js) — 8 targeted fixes
+| Fix | Where |
+|---|---|
+| Cash drawer filters by `lvl.moneyOptions` | [renderCashDrawer()](file:///Users/natashaharris/Downloads/educational-game/projects/checkout-rush/js/main.js#778-807) |
+| Consumables auto-activate on purchase | [renderShop()](file:///Users/natashaharris/Downloads/educational-game/projects/checkout-rush/js/main.js#330-408) buy click handler |
+| First wallpaper bought auto-sets as active | [renderShop()](file:///Users/natashaharris/Downloads/educational-game/projects/checkout-rush/js/main.js#330-408) buy click handler |
+| Wallpaper "🎨 Set Active" button in shop | [renderShop()](file:///Users/natashaharris/Downloads/educational-game/projects/checkout-rush/js/main.js#330-408) for owned wallpaper cards |
+| Rank name shown in HUD | [updateHUD()](file:///Users/natashaharris/Downloads/educational-game/projects/checkout-rush/js/main.js#828-835) via `ui.hudRank` |
+| Cosmetics (wallpaper + golden scanner) re-applied on scene reuse | [startGame()](file:///Users/natashaharris/Downloads/educational-game/projects/checkout-rush/js/main.js#417-483) — always runs now, not just first time |
+| "Click items to scan!" prompt on first round of each level | [nextRound()](file:///Users/natashaharris/Downloads/educational-game/projects/checkout-rush/js/main.js#484-528) → [showScanPrompt()](file:///Users/natashaharris/Downloads/educational-game/projects/checkout-rush/js/main.js#865-880) |
+| Prompt dismissed on first item click | [handleItemScanned()](file:///Users/natashaharris/Downloads/educational-game/projects/checkout-rush/js/main.js#718-748) → [hideScanPrompt()](file:///Users/natashaharris/Downloads/educational-game/projects/checkout-rush/js/main.js#881-885) |
+
+### [index.html](file:///Users/natashaharris/Downloads/educational-game/projects/checkout-rush/index.html) — 1 change
+- Added `<div class="hud-chip hud-rank-chip">` with `id="hud-rank"` between the Level chip and Score chip.
+
+### [scene.js](file:///Users/natashaharris/Downloads/educational-game/projects/checkout-rush/js/scene.js) — 2 additions
+- [highlightItems()](file:///Users/natashaharris/Downloads/educational-game/projects/checkout-rush/js/scene.js#909-913): Sets an internal `_itemsHighlighted` flag to `true`.
+- [clearHighlights()](file:///Users/natashaharris/Downloads/educational-game/projects/checkout-rush/js/scene.js#914-927): Resets flag and zeroes out emissive on all remaining item meshes.
+- [_animate()](file:///Users/natashaharris/Downloads/educational-game/projects/checkout-rush/js/scene.js#1114-1183) render loop: When `_itemsHighlighted` is true, each unscanned item glows with a pulsing green-teal emissive and gently bobs up/down so new players know exactly what to click.
+
+### [style.css](file:///Users/natashaharris/Downloads/educational-game/projects/checkout-rush/css/style.css) — 3 new blocks
+- **`.hud-rank-chip`** / **`.hud-rank-value`**: Gradient "Trainee → Master Cashier" text in a pill chip, hidden on mobile.
+- **`.scan-prompt`** / **`.scan-prompt.visible`**: Green pill that slides up from center-bottom with a bouncing hand emoji. Fades in/out with CSS transitions.
+- **`.shop-card.active-wallpaper`** / **`.shop-card-active-badge`** / **`.shop-card-set-active`**: Blue border + glow on active wallpaper, "✦ Active" badge, and a distinct blue "🎨 Set Active" button.
+
+---
+
+## How to Verify Each Fix
+
+| Fix | How to verify |
+|---|---|
+| 0-coin wrong answers | Give wrong change → toast shows coins but coins balance doesn't increase |
+| Filtered cash drawer | Level 1: only see quarters + $1 + $5. Level 10+: see $5, $10, $20, $50 |
+| Consumable activation | Buy Double Coins in shop → play next level → coins should be doubled |
+| Wallpaper selector | Buy 2 wallpapers → shop shows "Set Active" button → clicking changes store color immediately next game |
+| Rank in HUD | Start any level → HUD shows "Trainee" / "Cashier" / "Expert" etc. next to level number |
+| Cosmetic reuse fix | Buy Golden Scanner mid-session → Back to Menu → Play → scanner ring is gold |
+| Scan prompt | Start Level 1 → green "👆 Click items to scan them!" pill appears → disappears on first click |
+| Item glow | Start any level → items on counter pulse with green glow and float slightly |

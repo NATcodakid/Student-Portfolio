@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Projects by John Johnson — educational games, web apps, and tools." />
+  <title>Student Portfolio - Projects</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="bg-mesh" aria-hidden="true">
+    <svg class="w1" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 5 L95 30 L95 70 L50 95 L5 70 L5 30 Z" stroke="currentColor" stroke-width="0.8"/></svg>
+    <svg class="w2" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 8 L88 32 L88 68 L50 92 L12 68 L12 32 Z" stroke="currentColor" stroke-width="0.7"/></svg>
+  </div>
+  <div class="bg-aurora" aria-hidden="true">
+    <div class="bg-aurora__blob bg-aurora__blob--a"></div>
+    <div class="bg-aurora__blob bg-aurora__blob--b"></div>
+    <div class="bg-aurora__blob bg-aurora__blob--c"></div>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="site-wrap">
+    <div class="scroll-progress" aria-hidden="true"></div>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="site-logo" href="index.html" aria-label="John Johnson, home">
+          <img class="site-logo__mark" src="Assets/brand/jj-mark.svg" width="40" height="40" alt="" role="presentation" loading="eager" decoding="async" />
+          <span class="site-logo__type" aria-hidden="true">
+            <span class="site-logo__john">John</span>
+            <span class="site-logo__johnson">Johnson</span>
+          </span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+          <span class="nav-toggle__bars" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </span>
+        </button>
+        <nav id="site-nav" class="site-nav" aria-label="Primary">
+          <a href="index.html">Home</a>
+          <a class="is-active" href="projects.html">Projects</a>
+          <a href="case-study.html">Case Study</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="container page-hero page-hero--boot">
+        <h1>My Projects</h1>
+        <p>Things I’ve built, broken, and shipped—starting with my biggest build, Checkout Rush.</p>
+      </div>
+
+      <section class="section section--tight-top reveal--cascade-only" data-reveal data-cascade>
+        <div class="container project-grid">
+          <article class="project-card project-card--featured cascade-item" data-tilt>
+            <div class="project-card__media">
+              <img src="Assets/screenshots/checkout-rush-v2-robot-donut.png" width="1024" height="543" alt="Checkout Rush: robot customer at the counter with receipt, HUD, and in-world score pop-up." />
+            </div>
+            <div class="project-card__body">
+              <span class="project-card__badge">Featured</span>
+              <h2>Checkout Rush</h2>
+              <p>A 3D grocery checkout simulator that teaches adding prices, counting money, and making change under the pressure of a moving line.</p>
+              <div class="project-card__tags">
+                <span>Three.js</span>
+                <span>Firebase</span>
+                <span>TypeScript</span>
+                <span>Web Audio</span>
+              </div>
+              <div class="project-card__links">
+                <a class="btn btn--primary" href="https://checkoutrush.netlify.app/" target="_blank" rel="noopener noreferrer">Live demo</a>
+                <a class="btn btn--ghost" href="case-study.html">Case study</a>
+                <a class="btn btn--ghost" href="https://github.com/NATcodakid/Checkout-Rush" target="_blank" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card cascade-item" data-tilt>
+            <div class="project-card__media">
+              <img src="Assets/screenshots/weather-dashboard.png" width="1200" height="750" alt="Mockup of a weather dashboard with a weekly chart and five-day cards." loading="lazy" />
+            </div>
+            <div class="project-card__body">
+              <h2>Weather Dashboard</h2>
+              <p>Responsive weather app using the OpenWeather API for current conditions and a five-day forecast.</p>
+              <div class="project-card__tags">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>TypeScript</span>
+                <span>OpenWeather API</span>
+              </div>
+              <div class="project-card__links">
+                <a class="btn btn--ghost" href="https://github.com/johnjohnson-dev/weather-dashboard" target="_blank" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card cascade-item" data-tilt>
+            <div class="project-card__media">
+              <img src="Assets/screenshots/library-book-tracker.png" width="1200" height="750" alt="Mockup of a book checkout table for a library program." loading="lazy" />
+            </div>
+            <div class="project-card__body">
+              <h2>Library Book Tracker</h2>
+              <p>Flask + SQLite CRUD app built for Westlake Public Library to replace paper sign-out sheets for an after-school program.</p>
+              <div class="project-card__tags">
+                <span>Python</span>
+                <span>Flask</span>
+                <span>SQLite</span>
+              </div>
+              <div class="project-card__links">
+                <a class="btn btn--ghost" href="https://github.com/johnjohnson-dev/library-book-tracker" target="_blank" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card cascade-item" data-tilt>
+            <div class="project-card__media">
+              <img src="Assets/photos/headshot.jpg" width="1200" height="750" style="object-fit: cover;" alt="Personal Portfolio preview." loading="lazy" />
+            </div>
+            <div class="project-card__body">
+              <h2>Developer Portfolio</h2>
+              <p>A completely custom, ultra-fast portfolio built to showcase my educational games and web projects with a premium glassmorphic feel.</p>
+              <div class="project-card__tags">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>Vanilla JS</span>
+              </div>
+              <div class="project-card__links">
+                <a class="btn btn--ghost" href="https://github.com/NATcodakid/Portfolio" target="_blank" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <p class="more-soon">More projects coming soon. The pattern here is simple: ship something small, get feedback, then improve.</p>
+      </section>
+
+      <section class="section reveal--cascade-only" data-reveal data-cascade>
+        <div class="container">
+          <div class="contact">
+            <h2 class="cascade-item">Want the full story?</h2>
+            <p class="cascade-item">Read the Checkout Rush case study for research, tech decisions, playtests, and what changed after launch.</p>
+            <div class="social-links cascade-item">
+              <a class="btn btn--primary btn--linkish" href="case-study.html">Open case study</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>Built by John Johnson with HTML, CSS &amp; TypeScript.</p>
+      </div>
+    </footer>
+  </div>
+  <script src="js/main.js" defer></script>
+  <script src="js/ui-pro.js" defer></script>
+</body>
+</html>
